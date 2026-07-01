@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: bolivia-fantasy-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: bolivia_fantasy
+      POSTGRES_PASSWORD: bolivia_fantasy
+      POSTGRES_DB: bolivia_fantasy
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bolivia_fantasy -d bolivia_fantasy"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres_data:

@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Builds
+.next/
+dist/
+.turbo/
+*.tsbuildinfo
+
+# Env files (keep .env.example)
+.env
+.env.*
+!.env.example
+
+# Test coverage
+coverage/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
