@@ -72,6 +72,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@bolivia-fantasy/scoring':
+        specifier: workspace:*
+        version: link:../../packages/scoring
       '@bolivia-fantasy/shared':
         specifier: workspace:*
         version: link:../../packages/shared

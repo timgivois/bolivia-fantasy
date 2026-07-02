@@ -60,6 +60,143 @@
     "title": "Mi Equipo",
     "description": "Aquí armarás tu plantilla de 15 jugadores con un presupuesto de 100M."
   },
+  "squad": {
+    "title": "Mi Equipo",
+    "noRound": {
+      "title": "Sin fecha activa",
+      "description": "No hay una fecha disponible por el momento. Vuelve pronto para armar tu equipo."
+    },
+    "apiDown": {
+      "title": "Error de conexión",
+      "description": "No pudimos conectar con el servidor del juego. Intenta de nuevo en unos minutos."
+    },
+    "create": {
+      "title": "Crea tu equipo",
+      "description": "Elige un nombre para tu equipo. Luego armarás tu plantilla de 15 jugadores con un presupuesto de 100M.",
+      "nameLabel": "Nombre del equipo",
+      "namePlaceholder": "Ej.: La Verde de Sopocachi",
+      "submit": "Crear equipo",
+      "submitting": "Creando..."
+    },
+    "builder": {
+      "starters": "Titulares",
+      "bench": "Suplentes",
+      "budget": "Presupuesto",
+      "budgetRemaining": "Disponible: {amount}M",
+      "budgetSpent": "Gastado: {amount}M de {total}M",
+      "playersCount": "{count}/15 jugadores",
+      "clubCounters": "Jugadores por club (máx. 3)",
+      "save": "Guardar equipo",
+      "saveChanges": "Guardar cambios",
+      "saving": "Guardando...",
+      "savedSuccess": "¡Equipo guardado! Ya estás listo para la fecha.",
+      "emptySlot": "Añadir {position}",
+      "benchSlot": "Suplente",
+      "captainBadge": "Capitán",
+      "viceBadge": "Vicecapitán",
+      "price": "{amount}M",
+      "unsavedChanges": "Tienes cambios sin guardar."
+    },
+    "positions": {
+      "GK": "Arquero",
+      "DEF": "Defensor",
+      "MID": "Mediocampista",
+      "FWD": "Delantero"
+    },
+    "positionsShort": {
+      "GK": "ARQ",
+      "DEF": "DEF",
+      "MID": "MED",
+      "FWD": "DEL"
+    },
+    "picker": {
+      "title": "Jugadores",
+      "all": "Todos",
+      "searchPlaceholder": "Buscar jugador...",
+      "allClubs": "Todos los clubes",
+      "sortBy": "Ordenar por",
+      "sortPrice": "Precio",
+      "sortPoints": "Puntos",
+      "empty": "No se encontraron jugadores con esos filtros.",
+      "add": "Añadir a {name}",
+      "inSquad": "En tu equipo",
+      "points": "{count} pts",
+      "showing": "Mostrando {shown} de {total} jugadores"
+    },
+    "menu": {
+      "title": "Opciones de {name}",
+      "makeCaptain": "Nombrar capitán",
+      "makeVice": "Nombrar vicecapitán",
+      "swap": "Intercambiar con el banco",
+      "swapToStarters": "Intercambiar con un titular",
+      "remove": "Quitar del equipo",
+      "transfer": "Transferir",
+      "cancel": "Cancelar"
+    },
+    "swap": {
+      "hint": "Elige un jugador resaltado para intercambiar con {name}.",
+      "cancel": "Cancelar intercambio"
+    },
+    "feedback": {
+      "alreadyInSquad": "{name} ya está en tu equipo.",
+      "squadFull": "Ya tienes 15 jugadores. Quita a alguien para añadir otro.",
+      "positionFull": "Ya tienes el máximo de {position} ({max}).",
+      "clubLimit": "Máximo {max} jugadores por club: ya tienes {max} de {club}.",
+      "overBudget": "No te alcanza el presupuesto: {name} cuesta {price}M y solo tienes {remaining}M.",
+      "noSlot": "No hay lugar para este jugador ahora. Intercambia titulares y suplentes primero.",
+      "armbandCleared": "{name} pasó al banco y perdió la cinta. Elige capitán y vicecapitán.",
+      "transferBudget": "No te alcanza para {name}: te quedarían {remaining}M."
+    },
+    "lock": {
+      "countdown": "La fecha cierra en {time}",
+      "lockedTitle": "Fecha cerrada",
+      "lockedDescription": "La fecha está cerrada y tu equipo ya no se puede modificar. Podrás hacer cambios cuando abra la próxima fecha."
+    },
+    "transfers": {
+      "title": "Transferencias",
+      "hint": "Tu equipo ya está guardado. Para cambiar un jugador, tócalo y elige Transferir.",
+      "choosing": "Elige el reemplazo para {name} ({position}). Solo se muestran jugadores de su misma posición.",
+      "cancel": "Cancelar transferencia",
+      "success": "Transferencia realizada: sale {out}, entra {in}.",
+      "confirming": "Procesando transferencia..."
+    },
+    "errors": {
+      "generic": "Ocurrió un error inesperado. Intenta de nuevo.",
+      "api_unexpected": "Ocurrió un error inesperado. Intenta de nuevo.",
+      "request_invalid": "La solicitud no es válida. Revisa los datos e intenta de nuevo.",
+      "auth_missingToken": "Tu sesión expiró. Vuelve a iniciar sesión.",
+      "auth_invalidToken": "Tu sesión expiró. Vuelve a iniciar sesión.",
+      "auth_noEmail": "Tu cuenta no tiene un correo asociado.",
+      "round_locked": "La fecha ya está cerrada; tu equipo no se puede modificar.",
+      "round_notFound": "La fecha no existe.",
+      "round_noCurrent": "No hay una fecha activa en este momento.",
+      "squad_alreadyExists": "Ya tienes un equipo creado.",
+      "squad_notFound": "Todavía no creaste tu equipo.",
+      "squad_unknownPlayers": "Algunos jugadores ya no están disponibles. Actualiza la página.",
+      "squad_invalid": "Tu equipo no cumple las reglas:",
+      "squad_invalidSize": "El equipo debe tener exactamente 15 jugadores (tienes {actual}).",
+      "squad_duplicatePlayer": "Hay un jugador repetido en tu equipo.",
+      "squad_invalidSlots": "La distribución de puestos del equipo no es válida.",
+      "squad_invalidPositionCount": "Debes tener {expected} en la posición {position} (tienes {actual}).",
+      "squad_tooManyFromClub": "Máximo {max} jugadores por club (tienes {count} de {club}).",
+      "squad_missingClub": "Un jugador de tu equipo no tiene club asignado.",
+      "squad_missingPrice": "Un jugador de tu equipo no tiene precio asignado.",
+      "squad_overBudget": "Te pasaste del presupuesto: {totalPrice}M de {budget}M.",
+      "squad_invalidFormation": "Formación inválida: los titulares deben ser 1 ARQ, 3-5 DEF, 2-5 MED y 1-3 DEL.",
+      "squad_invalidCaptainCount": "Debes elegir exactamente un capitán.",
+      "squad_invalidViceCaptainCount": "Debes elegir exactamente un vicecapitán.",
+      "squad_captainNotStarter": "El capitán debe ser titular.",
+      "squad_viceCaptainNotStarter": "El vicecapitán debe ser titular.",
+      "squad_captainIsViceCaptain": "El capitán y el vicecapitán no pueden ser el mismo jugador.",
+      "transfer_samePlayer": "Elige un jugador distinto al que sale.",
+      "transfer_noSquad": "Primero guarda tu equipo para poder hacer transferencias.",
+      "transfer_playerNotInSquad": "El jugador que sale no está en tu equipo.",
+      "transfer_playerAlreadyInSquad": "Ese jugador ya está en tu equipo.",
+      "transfer_playerNotFound": "El jugador no está disponible.",
+      "transfer_invalidSquad": "La transferencia rompería las reglas del equipo:",
+      "transfer_unknownPlayers": "Algunos jugadores ya no están disponibles. Actualiza la página."
+    }
+  },
   "leagues": {
     "title": "Ligas",
     "description": "Crea ligas privadas y compite con tus amigos."

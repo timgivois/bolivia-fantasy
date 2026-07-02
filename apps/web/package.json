@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "lint": "eslint app components i18n types auth.ts middleware.ts"
+    "lint": "eslint app components i18n lib types auth.ts middleware.ts"
   },
   "dependencies": {
+    "@bolivia-fantasy/scoring": "workspace:*",
     "@bolivia-fantasy/shared": "workspace:*",
     "next": "^15.3.0",
     "next-auth": "5.0.0-beta.31",
