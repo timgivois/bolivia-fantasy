@@ -35,19 +35,31 @@ importers:
       '@bolivia-fantasy/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@bolivia-fantasy/scoring':
+        specifier: workspace:*
+        version: link:../../packages/scoring
       '@bolivia-fantasy/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       '@fastify/cors':
         specifier: ^11.2.0
         version: 11.2.0
+      drizzle-orm:
+        specifier: ^0.44.0
+        version: 0.44.7(@types/pg@8.20.0)(pg@8.22.0)
       fastify:
         specifier: ^5.4.0
         version: 5.9.0
+      pg:
+        specifier: ^8.16.0
+        version: 8.22.0
     devDependencies:
       '@types/node':
         specifier: ^22.15.0
         version: 22.20.0
+      '@types/pg':
+        specifier: ^8.15.0
+        version: 8.20.0
       tsx:
         specifier: ^4.20.0
         version: 4.22.4
@@ -103,9 +115,15 @@ importers:
       '@bolivia-fantasy/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@bolivia-fantasy/scoring':
+        specifier: workspace:*
+        version: link:../../packages/scoring
       '@bolivia-fantasy/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      drizzle-orm:
+        specifier: ^0.44.0
+        version: 0.44.7(@types/pg@8.20.0)(pg@8.22.0)
       pg-boss:
         specifier: ^12.24.1
         version: 12.24.1

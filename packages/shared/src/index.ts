@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+// Re-export zod so downstream workspace packages (e.g. apps/api) can build
+// validation schemas without declaring their own zod dependency/version.
+export { z };
+
 /**
  * Placeholder exports for @bolivia-fantasy/shared.
  * Real shared zod schemas and types (players, squads, scoring events, ...)
