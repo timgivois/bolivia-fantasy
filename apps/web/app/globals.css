@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme {
+  /* Bolivian tricolor accents over a dark "pitch" green base. */
+  --color-bo-red: #d52b1e;
+  --color-bo-yellow: #f9e300;
+  --color-bo-green: #007934;
+  --color-pitch-950: #04180f;
+  --color-pitch-900: #06231a;
+  --color-pitch-800: #0a3325;
+}
+
+body {
+  background-color: var(--color-pitch-950);
+  color: #ffffff;
+}

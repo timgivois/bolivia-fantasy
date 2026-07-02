@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
+
+import { Navbar } from "@/components/nav/navbar";
+import { Providers } from "@/components/providers";
 
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "Fantasy Fútbol Bolivia",
-  description: "El juego de fantasy de la División Profesional de Bolivia",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("metadata");
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -19,8 +26,14 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className="antialiased">
-        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+      <body className="min-h-screen antialiased">
+        <NextIntlClientProvider messages={messages}>
+          <Providers>
+            <Navbar />
+            {/* pb-20 keeps content clear of the mobile bottom tab bar */}
+            <div className="pb-20 md:pb-0">{children}</div>
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

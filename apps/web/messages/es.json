@@ -1,8 +1,75 @@
 {
-  "home": {
+  "metadata": {
     "title": "Fantasy Fútbol Bolivia",
-    "tagline": "El juego de fantasy de la División Profesional",
-    "description": "Arma tu equipo con jugadores del fútbol boliviano, suma puntos con sus actuaciones reales y compite con tus amigos.",
-    "comingSoon": "Próximamente"
+    "description": "El juego de fantasy de la División Profesional de Bolivia"
+  },
+  "common": {
+    "appName": "Fantasy Fútbol Bolivia",
+    "comingSoon": "Próximamente..."
+  },
+  "nav": {
+    "home": "Inicio",
+    "team": "Mi Equipo",
+    "leagues": "Ligas",
+    "standings": "Clasificación",
+    "admin": "Admin",
+    "signIn": "Iniciar sesión",
+    "signOut": "Cerrar sesión",
+    "openUserMenu": "Abrir menú de usuario"
+  },
+  "home": {
+    "hero": {
+      "badge": "División Profesional de Bolivia",
+      "title": "Fantasy Fútbol Bolivia",
+      "tagline": "El juego de fantasy de la División Profesional",
+      "description": "Arma tu equipo con jugadores del fútbol boliviano, suma puntos con sus actuaciones reales y compite con tus amigos en ligas privadas.",
+      "ctaSignedOut": "Jugar ahora",
+      "ctaSignedIn": "Ir a mi equipo",
+      "secondaryCta": "Ver clasificación"
+    },
+    "howItWorks": {
+      "title": "¿Cómo se juega?",
+      "subtitle": "Tres pasos para convertirte en el mejor director técnico de Bolivia.",
+      "squad": {
+        "title": "Arma tu equipo",
+        "description": "Elige 15 jugadores de los clubes de la División Profesional con un presupuesto de 100M. Define tu once titular cada fecha."
+      },
+      "points": {
+        "title": "Suma puntos reales",
+        "description": "Tus jugadores ganan puntos por goles, asistencias y vallas invictas en los partidos reales del campeonato."
+      },
+      "leagues": {
+        "title": "Compite en ligas",
+        "description": "Crea ligas privadas con tus amigos o sube en la clasificación general de todo el país."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para dirigir?",
+      "description": "Entra con tu cuenta y arma tu equipo antes de la próxima fecha.",
+      "button": "Crear mi equipo"
+    }
+  },
+  "login": {
+    "title": "Bienvenido",
+    "subtitle": "Entra para armar tu equipo y competir en la División Profesional.",
+    "google": "Continuar con Google",
+    "facebook": "Continuar con Facebook",
+    "legal": "Al continuar aceptas participar limpiamente, como en la cancha."
+  },
+  "team": {
+    "title": "Mi Equipo",
+    "description": "Aquí armarás tu plantilla de 15 jugadores con un presupuesto de 100M."
+  },
+  "leagues": {
+    "title": "Ligas",
+    "description": "Crea ligas privadas y compite con tus amigos."
+  },
+  "standings": {
+    "title": "Clasificación",
+    "description": "La tabla general de todos los directores técnicos del país."
+  },
+  "admin": {
+    "title": "Administración",
+    "description": "Panel de gestión de jugadores, fechas y puntajes."
   }
 }
