@@ -11,13 +11,16 @@
     "lint": "eslint src"
   },
   "dependencies": {
+    "@auth/core": "^0.34.3",
     "@bolivia-fantasy/db": "workspace:*",
     "@bolivia-fantasy/shared": "workspace:*",
+    "@fastify/cors": "^11.2.0",
     "fastify": "^5.4.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.0",
     "tsx": "^4.20.0",
-    "typescript": "^5.8.0"
+    "typescript": "^5.8.0",
+    "vitest": "^4.1.9"
   }
 }

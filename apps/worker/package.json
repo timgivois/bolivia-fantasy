@@ -12,11 +12,13 @@
   },
   "dependencies": {
     "@bolivia-fantasy/db": "workspace:*",
-    "@bolivia-fantasy/shared": "workspace:*"
+    "@bolivia-fantasy/shared": "workspace:*",
+    "pg-boss": "^12.24.1"
   },
   "devDependencies": {
     "@types/node": "^22.15.0",
     "tsx": "^4.20.0",
-    "typescript": "^5.8.0"
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.6"
   }
 }
