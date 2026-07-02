@@ -1,0 +1,137 @@
+{
+  "get": "fixtures/players",
+  "parameters": { "fixture": "9101" },
+  "errors": [],
+  "results": 2,
+  "paging": { "current": 1, "total": 1 },
+  "response": [
+    {
+      "team": {
+        "id": 5001,
+        "name": "Bolívar",
+        "logo": "https://media.api-sports.io/football/teams/5001.png",
+        "update": "2026-07-04T22:05:11+00:00"
+      },
+      "players": [
+        {
+          "player": { "id": 60001, "name": "Carlos Lampe", "photo": "https://media.api-sports.io/football/players/60001.png" },
+          "statistics": [
+            {
+              "games": { "minutes": 90, "number": 1, "position": "G", "rating": "7.5", "captain": false, "substitute": false },
+              "offsides": null,
+              "shots": { "total": 0, "on": 0 },
+              "goals": { "total": null, "conceded": 0, "assists": null, "saves": 4 },
+              "passes": { "total": 24, "key": 0, "accuracy": "18" },
+              "tackles": { "total": null, "blocks": 0, "interceptions": 0 },
+              "duels": { "total": 2, "won": 2 },
+              "dribbles": { "attempts": 0, "success": 0, "past": null },
+              "fouls": { "drawn": 1, "committed": 0 },
+              "cards": { "yellow": 0, "red": 0 },
+              "penalty": { "won": null, "commited": null, "scored": 0, "missed": 0, "saved": 0 }
+            }
+          ]
+        },
+        {
+          "player": { "id": 60002, "name": "Luis Haquin", "photo": "https://media.api-sports.io/football/players/60002.png" },
+          "statistics": [
+            {
+              "games": { "minutes": 90, "number": 5, "position": "D", "rating": "7.8", "captain": true, "substitute": false },
+              "offsides": null,
+              "shots": { "total": 2, "on": 1 },
+              "goals": { "total": 1, "conceded": 0, "assists": null, "saves": null },
+              "passes": { "total": 52, "key": 1, "accuracy": "44" },
+              "tackles": { "total": 3, "blocks": 1, "interceptions": 2 },
+              "duels": { "total": 9, "won": 7 },
+              "dribbles": { "attempts": 0, "success": 0, "past": null },
+              "fouls": { "drawn": 0, "committed": 2 },
+              "cards": { "yellow": 1, "red": 0 },
+              "penalty": { "won": null, "commited": null, "scored": 0, "missed": 0, "saved": 0 }
+            }
+          ]
+        },
+        {
+          "player": { "id": 60003, "name": "Ramiro Vaca", "photo": "https://media.api-sports.io/football/players/60003.png" },
+          "statistics": [
+            {
+              "games": { "minutes": 75, "number": 10, "position": "M", "rating": "8.2", "captain": false, "substitute": false },
+              "offsides": 1,
+              "shots": { "total": 3, "on": 2 },
+              "goals": { "total": null, "conceded": 0, "assists": 2, "saves": null },
+              "passes": { "total": 48, "key": 4, "accuracy": "41" },
+              "tackles": { "total": 1, "blocks": 0, "interceptions": 1 },
+              "duels": { "total": 12, "won": 8 },
+              "dribbles": { "attempts": 4, "success": 3, "past": null },
+              "fouls": { "drawn": 3, "committed": 1 },
+              "cards": { "yellow": 0, "red": 0 },
+              "penalty": { "won": null, "commited": null, "scored": 0, "missed": 0, "saved": 0 }
+            }
+          ]
+        },
+        {
+          "player": { "id": 60010, "name": "Bruno Sávio", "photo": "https://media.api-sports.io/football/players/60010.png" },
+          "statistics": [
+            {
+              "games": { "minutes": 90, "number": 7, "position": "F", "rating": "7.9", "captain": false, "substitute": false },
+              "offsides": 2,
+              "shots": { "total": 4, "on": 3 },
+              "goals": { "total": 1, "conceded": 0, "assists": null, "saves": null },
+              "passes": { "total": 30, "key": 2, "accuracy": "25" },
+              "tackles": { "total": 0, "blocks": 0, "interceptions": 0 },
+              "duels": { "total": 10, "won": 5 },
+              "dribbles": { "attempts": 6, "success": 4, "past": null },
+              "fouls": { "drawn": 2, "committed": 1 },
+              "cards": { "yellow": 0, "red": 0 },
+              "penalty": { "won": null, "commited": null, "scored": 0, "missed": 0, "saved": 0 }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team": {
+        "id": 5002,
+        "name": "The Strongest",
+        "logo": "https://media.api-sports.io/football/teams/5002.png",
+        "update": "2026-07-04T22:05:11+00:00"
+      },
+      "players": [
+        {
+          "player": { "id": 60004, "name": "Enrique Triverio", "photo": "https://media.api-sports.io/football/players/60004.png" },
+          "statistics": [
+            {
+              "games": { "minutes": 90, "number": 9, "position": "F", "rating": "6.4", "captain": true, "substitute": false },
+              "offsides": 3,
+              "shots": { "total": 2, "on": 0 },
+              "goals": { "total": null, "conceded": 0, "assists": null, "saves": null },
+              "passes": { "total": 18, "key": 0, "accuracy": "12" },
+              "tackles": { "total": 0, "blocks": 0, "interceptions": 0 },
+              "duels": { "total": 14, "won": 4 },
+              "dribbles": { "attempts": 2, "success": 0, "past": null },
+              "fouls": { "drawn": 1, "committed": 3 },
+              "cards": { "yellow": 1, "red": 0 },
+              "penalty": { "won": null, "commited": null, "scored": 0, "missed": 0, "saved": 0 }
+            }
+          ]
+        },
+        {
+          "player": { "id": 60011, "name": "Marcos Ríos", "photo": "https://media.api-sports.io/football/players/60011.png" },
+          "statistics": [
+            {
+              "games": { "minutes": 78, "number": 3, "position": "D", "rating": "5.6", "captain": false, "substitute": false },
+              "offsides": null,
+              "shots": { "total": 0, "on": 0 },
+              "goals": { "total": null, "conceded": 0, "assists": null, "saves": null },
+              "passes": { "total": 35, "key": 0, "accuracy": "29" },
+              "tackles": { "total": 4, "blocks": 0, "interceptions": 1 },
+              "duels": { "total": 11, "won": 5 },
+              "dribbles": { "attempts": 0, "success": 0, "past": 2 },
+              "fouls": { "drawn": 0, "committed": 4 },
+              "cards": { "yellow": 2, "red": 1 },
+              "penalty": { "won": null, "commited": null, "scored": 0, "missed": 0, "saved": 0 }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

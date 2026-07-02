@@ -1,0 +1,149 @@
+{
+  "get": "teams",
+  "parameters": { "league": "344", "season": "2026" },
+  "errors": [],
+  "results": 7,
+  "paging": { "current": 1, "total": 1 },
+  "response": [
+    {
+      "team": {
+        "id": 5001,
+        "name": "Bolívar",
+        "code": "BOL",
+        "country": "Bolivia",
+        "founded": 1925,
+        "national": false,
+        "logo": "https://media.api-sports.io/football/teams/5001.png"
+      },
+      "venue": {
+        "id": 2101,
+        "name": "Estadio Hernando Siles",
+        "address": "Avenida Saavedra, Miraflores",
+        "city": "La Paz",
+        "capacity": 41143,
+        "surface": "grass",
+        "image": "https://media.api-sports.io/football/venues/2101.png"
+      }
+    },
+    {
+      "team": {
+        "id": 5002,
+        "name": "The Strongest",
+        "code": "STR",
+        "country": "Bolivia",
+        "founded": 1908,
+        "national": false,
+        "logo": "https://media.api-sports.io/football/teams/5002.png"
+      },
+      "venue": {
+        "id": 2101,
+        "name": "Estadio Hernando Siles",
+        "address": "Avenida Saavedra, Miraflores",
+        "city": "La Paz",
+        "capacity": 41143,
+        "surface": "grass",
+        "image": "https://media.api-sports.io/football/venues/2101.png"
+      }
+    },
+    {
+      "team": {
+        "id": 5003,
+        "name": "Club Always Ready",
+        "code": "ALW",
+        "country": "Bolivia",
+        "founded": 1933,
+        "national": false,
+        "logo": "https://media.api-sports.io/football/teams/5003.png"
+      },
+      "venue": {
+        "id": 2102,
+        "name": "Estadio Municipal de El Alto",
+        "address": "Villa Ingenio",
+        "city": "El Alto",
+        "capacity": 25000,
+        "surface": "grass",
+        "image": "https://media.api-sports.io/football/venues/2102.png"
+      }
+    },
+    {
+      "team": {
+        "id": 5004,
+        "name": "Blooming",
+        "code": "BLO",
+        "country": "Bolivia",
+        "founded": 1946,
+        "national": false,
+        "logo": "https://media.api-sports.io/football/teams/5004.png"
+      },
+      "venue": {
+        "id": 2103,
+        "name": "Estadio Ramón Tahuichi Aguilera",
+        "address": "Avenida Omar Chávez Ortiz",
+        "city": "Santa Cruz de la Sierra",
+        "capacity": 38000,
+        "surface": "grass",
+        "image": "https://media.api-sports.io/football/venues/2103.png"
+      }
+    },
+    {
+      "team": {
+        "id": 5005,
+        "name": "Oriente Petrolero",
+        "code": "ORI",
+        "country": "Bolivia",
+        "founded": 1955,
+        "national": false,
+        "logo": "https://media.api-sports.io/football/teams/5005.png"
+      },
+      "venue": {
+        "id": 2103,
+        "name": "Estadio Ramón Tahuichi Aguilera",
+        "address": "Avenida Omar Chávez Ortiz",
+        "city": "Santa Cruz de la Sierra",
+        "capacity": 38000,
+        "surface": "grass",
+        "image": "https://media.api-sports.io/football/venues/2103.png"
+      }
+    },
+    {
+      "team": {
+        "id": 5006,
+        "name": "Club Aurora",
+        "code": "AUR",
+        "country": "Bolivia",
+        "founded": 1935,
+        "national": false,
+        "logo": "https://media.api-sports.io/football/teams/5006.png"
+      },
+      "venue": {
+        "id": 2104,
+        "name": "Estadio Félix Capriles",
+        "address": "Avenida Libertador Bolívar",
+        "city": "Cochabamba",
+        "capacity": 32000,
+        "surface": "grass",
+        "image": "https://media.api-sports.io/football/venues/2104.png"
+      }
+    },
+    {
+      "team": {
+        "id": 5999,
+        "name": "Deportivo Fantasma",
+        "code": "FAN",
+        "country": "Bolivia",
+        "founded": 1990,
+        "national": false,
+        "logo": "https://media.api-sports.io/football/teams/5999.png"
+      },
+      "venue": {
+        "id": 2199,
+        "name": "Estadio Fantasma",
+        "address": "Calle Falsa 123",
+        "city": "Trinidad",
+        "capacity": 12000,
+        "surface": "grass",
+        "image": "https://media.api-sports.io/football/venues/2199.png"
+      }
+    }
+  ]
+}
