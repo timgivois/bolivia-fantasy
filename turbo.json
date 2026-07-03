@@ -12,6 +12,9 @@
     "test": {
       "dependsOn": ["^build"]
     },
+    "@bolivia-fantasy/worker#test": {
+      "dependsOn": ["^build", "@bolivia-fantasy/api#test"]
+    },
     "dev": {
       "dependsOn": ["^build"],
       "cache": false,

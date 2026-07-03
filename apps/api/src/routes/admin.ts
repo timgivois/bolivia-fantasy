@@ -6,7 +6,7 @@ import {
   rounds,
 } from "@bolivia-fantasy/db";
 import { z } from "@bolivia-fantasy/shared";
-import { eq, max, sql } from "drizzle-orm";
+import { and, eq, max, sql } from "drizzle-orm";
 import type { FastifyInstance } from "fastify";
 
 import { parseOr400, sendError } from "../lib/http.js";
@@ -56,6 +56,19 @@ export function registerAdminRoutes(app: FastifyInstance): void {
       return sendError(reply, 404, "player.notFound", "Player not found");
     }
     return updated;
+  });
+
+  app.get("/stats/:fixtureId/:playerId", async (request, reply) => {
+    const params = parseOr400(statsParamsSchema, request.params, reply);
+    if (!params) return;
+    const row = await app.db.query.playerFixtureStats.findFirst({
+      where: and(
+        eq(playerFixtureStats.fixtureId, params.fixtureId),
+        eq(playerFixtureStats.playerId, params.playerId),
+      ),
+    });
+    if (!row) return sendError(reply, 404, "stats.notFound", "Stat line not found");
+    return row;
   });
 
   app.put("/stats/:fixtureId/:playerId", async (request, reply) => {

@@ -659,6 +659,28 @@ describe("admin", () => {
     expect(sorted.json().items[0].totalPoints).toBe(8);
   });
 
+  it("reads a single stat line and 404s when none exists", async () => {
+    // The upsert test above left def[0] with 90 min + 1 goal on `fixture`.
+    const found = await app.inject({
+      method: "GET",
+      url: `/admin/stats/${fixture.id}/${def[0]!.id}`,
+      headers: bearer(adminToken),
+    });
+    expect(found.statusCode).toBe(200);
+    expect(found.json().minutes).toBe(90);
+    expect(found.json().goals).toBe(1);
+    expect(found.json().isCorrection).toBe(true);
+
+    // extraDefsClub0[1] never receives a stat line anywhere in this suite.
+    const missing = await app.inject({
+      method: "GET",
+      url: `/admin/stats/${fixture.id}/${extraDefsClub0[1]!.id}`,
+      headers: bearer(adminToken),
+    });
+    expect(missing.statusCode).toBe(404);
+    expect(missing.json().error.code).toBe("stats.notFound");
+  });
+
   it("locks and unlocks a round", async () => {
     const lock = await app.inject({
       method: "POST",

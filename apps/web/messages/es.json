@@ -4,8 +4,7 @@
     "description": "El juego de fantasy de la División Profesional de Bolivia"
   },
   "common": {
-    "appName": "Fantasy Fútbol Bolivia",
-    "comingSoon": "Próximamente..."
+    "appName": "Fantasy Fútbol Bolivia"
   },
   "nav": {
     "home": "Inicio",
@@ -354,6 +353,109 @@
   },
   "admin": {
     "title": "Administración",
-    "description": "Panel de gestión de jugadores, fechas y puntajes."
+    "description": "Panel de gestión de jugadores, fechas y puntajes.",
+    "forbidden": {
+      "title": "Acceso denegado",
+      "description": "Esta sección es solo para administradores del juego."
+    },
+    "apiDown": {
+      "title": "Error de conexión",
+      "description": "No pudimos conectar con el servidor del juego. Intenta de nuevo en unos minutos."
+    },
+    "health": {
+      "title": "Estado de sincronización",
+      "requestsLabel": "Solicitudes a API-Football hoy",
+      "requestsOf": "{used} de {limit}",
+      "warning": "Cerca del límite diario de solicitudes",
+      "lastEndpoint": "Último endpoint consultado",
+      "lastFixtureSync": "Última sincronización de partidos",
+      "lastFixtureUpdate": "Última actualización de partidos",
+      "lastStatUpdate": "Última actualización de estadísticas",
+      "never": "Nunca"
+    },
+    "sections": {
+      "prices": {
+        "title": "Precios de jugadores",
+        "description": "Busca un jugador y ajusta su precio de mercado."
+      },
+      "rounds": {
+        "title": "Fechas",
+        "description": "Bloquea o desbloquea fechas del calendario."
+      },
+      "stats": {
+        "title": "Corrección de estadísticas",
+        "description": "Corrige manualmente la planilla de un jugador en un partido."
+      }
+    },
+    "prices": {
+      "searchLabel": "Buscar jugador",
+      "searchPlaceholder": "Buscar jugador...",
+      "player": "Jugador",
+      "club": "Club",
+      "position": "Pos.",
+      "price": "Precio (M)",
+      "actions": "Acciones",
+      "save": "Guardar",
+      "saving": "Guardando...",
+      "saved": "Guardado",
+      "empty": "No se encontraron jugadores.",
+      "showing": "Mostrando {shown} de {total} jugadores"
+    },
+    "rounds": {
+      "round": "Fecha",
+      "statusLabel": "Estado",
+      "actions": "Acciones",
+      "lock": "Bloquear",
+      "unlock": "Desbloquear",
+      "confirmLock": "¿Bloquear {name}?",
+      "confirmUnlock": "¿Desbloquear {name}?",
+      "confirm": "Confirmar",
+      "cancel": "Cancelar",
+      "working": "Aplicando...",
+      "empty": "Todavía no hay fechas en el calendario.",
+      "status": {
+        "upcoming": "Próxima",
+        "locked": "Bloqueada",
+        "live": "En vivo",
+        "finalized": "Finalizada"
+      }
+    },
+    "stats": {
+      "roundLabel": "Fecha",
+      "fixtureLabel": "Partido",
+      "playerLabel": "Jugador",
+      "selectPlaceholder": "Selecciona...",
+      "loadingFixtures": "Cargando partidos...",
+      "noFixtures": "Esta fecha no tiene partidos.",
+      "loadingStats": "Cargando estadísticas...",
+      "existing": "Editando una planilla existente.",
+      "new": "Sin planilla previa: se creará una nueva como corrección.",
+      "fields": {
+        "minutes": "Minutos",
+        "goals": "Goles",
+        "assists": "Asistencias",
+        "cleanSheet": "Valla invicta",
+        "goalsConceded": "Goles recibidos",
+        "penaltiesSaved": "Penales atajados",
+        "penaltiesMissed": "Penales fallados",
+        "yellowCards": "Amarillas",
+        "redCards": "Rojas",
+        "ownGoals": "Autogoles",
+        "saves": "Atajadas",
+        "rating": "Calificación (0-10, opcional)"
+      },
+      "save": "Guardar corrección",
+      "saving": "Guardando...",
+      "saved": "Corrección guardada."
+    },
+    "errors": {
+      "generic": "Ocurrió un error inesperado. Intenta de nuevo.",
+      "auth_forbidden": "Tu cuenta no tiene permisos de administrador.",
+      "auth_missingToken": "Tu sesión expiró. Vuelve a iniciar sesión.",
+      "player_notFound": "No encontramos ese jugador.",
+      "round_notFound": "No encontramos esa fecha.",
+      "fixture_notFound": "No encontramos ese partido.",
+      "api_unexpected": "Ocurrió un error inesperado. Intenta de nuevo."
+    }
   }
 }

@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 
+import type { StatFields, StatLine, SyncHealth } from "@/components/admin/types";
 import type {
   LeagueInfo,
   LeagueStandingsResponse,
@@ -65,7 +66,7 @@ async function authHeaders(): Promise<Record<string, string>> {
 }
 
 interface RequestOptions {
-  method?: "GET" | "POST" | "PUT";
+  method?: "GET" | "POST" | "PUT" | "PATCH";
   body?: unknown;
   /** Attach the Auth.js session token (required for /me/* routes). */
   auth?: boolean;
@@ -271,6 +272,68 @@ export async function getLeagueStandings(
   leagueId: number,
 ): Promise<LeagueStandingsResponse> {
   return request<LeagueStandingsResponse>(`/leagues/${leagueId}/standings`, {
+    auth: true,
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Admin endpoints (/admin/*). The API enforces the role server-side: callers
+// without users.role = 'admin' get a 403 { error: { code: "auth.forbidden" } }.
+// ---------------------------------------------------------------------------
+
+export async function getSyncHealth(): Promise<SyncHealth> {
+  return request<SyncHealth>("/admin/sync-health", { auth: true });
+}
+
+export async function updatePlayerPrice(
+  playerId: number,
+  price: number,
+): Promise<PlayerLite> {
+  return request<PlayerLite>(`/admin/players/${playerId}`, {
+    method: "PATCH",
+    body: { price },
+    auth: true,
+  });
+}
+
+export async function lockRound(roundId: number): Promise<RoundInfo> {
+  return request<RoundInfo>(`/admin/rounds/${roundId}/lock`, {
+    method: "POST",
+    auth: true,
+  });
+}
+
+export async function unlockRound(roundId: number): Promise<RoundInfo> {
+  return request<RoundInfo>(`/admin/rounds/${roundId}/unlock`, {
+    method: "POST",
+    auth: true,
+  });
+}
+
+/** Existing stat line for a player in a fixture, or null if none was recorded. */
+export async function getStatLine(
+  fixtureId: number,
+  playerId: number,
+): Promise<StatLine | null> {
+  try {
+    return await request<StatLine>(`/admin/stats/${fixtureId}/${playerId}`, {
+      auth: true,
+    });
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 404) return null;
+    throw error;
+  }
+}
+
+/** Upsert a manual stat correction; the API marks the row isCorrection=true. */
+export async function putStatCorrection(
+  fixtureId: number,
+  playerId: number,
+  fields: StatFields,
+): Promise<StatLine> {
+  return request<StatLine>(`/admin/stats/${fixtureId}/${playerId}`, {
+    method: "PUT",
+    body: fields,
     auth: true,
   });
 }
