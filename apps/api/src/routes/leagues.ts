@@ -148,6 +148,8 @@ export function registerLeagueRoutes(app: FastifyInstance): void {
       .select({
         userId: users.id,
         userName: users.name,
+        /** Null while the member has not created a squad yet. */
+        squadId: fantasySquads.id,
         squadName: fantasySquads.name,
         totalPoints,
         joinedAt: miniLeagueMembers.joinedAt,

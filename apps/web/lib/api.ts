@@ -1,6 +1,16 @@
 import { cookies } from "next/headers";
 
 import type {
+  LeagueInfo,
+  LeagueStandingsResponse,
+  MyLeague,
+} from "@/components/leagues/types";
+import type {
+  FixtureItem,
+  MySquadPointsResponse,
+  RoundListItem,
+} from "@/components/points/types";
+import type {
   Club,
   PickInput,
   PlayerLite,
@@ -8,6 +18,7 @@ import type {
   SavedPick,
   SquadInfo,
 } from "@/components/squad/types";
+import type { LeaderboardResponse } from "@/components/standings/types";
 
 /**
  * Server-only client for the Fastify API (apps/api). Never import this from
@@ -127,6 +138,30 @@ export async function getCurrentRound(): Promise<RoundInfo | null> {
   }
 }
 
+/** Every round, ordered by season/phase/roundNumber (the API's order). */
+export async function getRounds(): Promise<RoundListItem[]> {
+  const data = await request<{ items: RoundListItem[] }>("/rounds");
+  return data.items;
+}
+
+export async function getFixtures(roundId: number): Promise<FixtureItem[]> {
+  const data = await request<{ items: FixtureItem[] }>(`/fixtures?roundId=${roundId}`);
+  return data.items;
+}
+
+export async function getGlobalLeaderboard(options: {
+  page: number;
+  perPage: number;
+  roundId?: number;
+}): Promise<LeaderboardResponse> {
+  const params = new URLSearchParams({
+    page: String(options.page),
+    perPage: String(options.perPage),
+  });
+  if (options.roundId !== undefined) params.set("roundId", String(options.roundId));
+  return request<LeaderboardResponse>(`/leaderboard/global?${params}`);
+}
+
 // ---------------------------------------------------------------------------
 // Authenticated /me endpoints
 // ---------------------------------------------------------------------------
@@ -187,6 +222,55 @@ export async function postTransfer(
   return request<TransferResponse>("/me/transfers", {
     method: "POST",
     body: { roundId, out: playerOutId, in: playerInId },
+    auth: true,
+  });
+}
+
+/**
+ * Per-pick points breakdown for a round (default: current round), or null
+ * when the user has no squad yet.
+ */
+export async function getMySquadPoints(
+  roundId?: number,
+): Promise<MySquadPointsResponse | null> {
+  const suffix = roundId === undefined ? "" : `?roundId=${roundId}`;
+  try {
+    return await request<MySquadPointsResponse>(`/me/squad/points${suffix}`, {
+      auth: true,
+    });
+  } catch (error) {
+    if (
+      error instanceof ApiError &&
+      error.status === 404 &&
+      error.payload.code === "squad.notFound"
+    ) {
+      return null;
+    }
+    throw error;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Authenticated /leagues endpoints
+// ---------------------------------------------------------------------------
+
+export async function createLeague(name: string): Promise<LeagueInfo> {
+  return request<LeagueInfo>("/leagues", { method: "POST", body: { name }, auth: true });
+}
+
+export async function joinLeague(code: string): Promise<LeagueInfo> {
+  return request<LeagueInfo>("/leagues/join", { method: "POST", body: { code }, auth: true });
+}
+
+export async function getMyLeagues(): Promise<MyLeague[]> {
+  const data = await request<{ items: MyLeague[] }>("/leagues/mine", { auth: true });
+  return data.items;
+}
+
+export async function getLeagueStandings(
+  leagueId: number,
+): Promise<LeagueStandingsResponse> {
+  return request<LeagueStandingsResponse>(`/leagues/${leagueId}/standings`, {
     auth: true,
   });
 }

@@ -10,6 +10,7 @@
   "nav": {
     "home": "Inicio",
     "team": "Mi Equipo",
+    "points": "Puntos",
     "leagues": "Ligas",
     "standings": "Clasificación",
     "admin": "Admin",
@@ -197,13 +198,159 @@
       "transfer_unknownPlayers": "Algunos jugadores ya no están disponibles. Actualiza la página."
     }
   },
+  "points": {
+    "title": "Mi fecha",
+    "roundLabel": "Fecha",
+    "noRound": {
+      "title": "Sin fechas",
+      "description": "Todavía no hay fechas en el calendario. Vuelve pronto."
+    },
+    "noSquad": {
+      "title": "Todavía no tienes equipo",
+      "description": "Crea tu equipo de 15 jugadores para empezar a sumar puntos.",
+      "cta": "Crear mi equipo"
+    },
+    "noPicks": {
+      "title": "Sin alineación",
+      "description": "No guardaste una alineación para esta fecha."
+    },
+    "apiDown": {
+      "title": "Error de conexión",
+      "description": "No pudimos conectar con el servidor del juego. Intenta de nuevo en unos minutos."
+    },
+    "summary": {
+      "total": "Puntos de la fecha",
+      "bench": "Banco",
+      "transferPenalty": "Penalización por transferencias",
+      "finalized": "Fecha finalizada",
+      "provisional": "Puntaje en curso",
+      "live": "EN VIVO"
+    },
+    "pitch": {
+      "starters": "Titulares",
+      "bench": "Suplentes"
+    },
+    "player": {
+      "modalTitle": "Puntos de {name}",
+      "didNotPlay": "No jugó en esta fecha.",
+      "points": "{count} pts",
+      "captain": "Capitán",
+      "viceCaptain": "Vicecapitán",
+      "captainDouble": "Capitán ×{multiplier}",
+      "autoSubIn": "Entró del banco por sustitución automática.",
+      "autoSubOut": "Salió al banco por sustitución automática.",
+      "basePoints": "Subtotal",
+      "total": "Total",
+      "close": "Cerrar",
+      "openBreakdown": "Ver desglose de {name}"
+    },
+    "rules": {
+      "minutes": "Minutos jugados",
+      "goals": "Goles",
+      "assists": "Asistencias",
+      "cleanSheet": "Valla invicta",
+      "goalsConceded": "Goles recibidos",
+      "penaltiesSaved": "Penales atajados",
+      "penaltiesMissed": "Penales fallados",
+      "yellowCards": "Tarjetas amarillas",
+      "redCards": "Tarjetas rojas",
+      "ownGoals": "Autogoles",
+      "saves": "Atajadas"
+    },
+    "fixtures": {
+      "title": "Partidos de la fecha",
+      "empty": "No hay partidos programados para esta fecha.",
+      "live": "EN VIVO",
+      "status": {
+        "halftime": "Descanso",
+        "finished": "Final",
+        "postponed": "Postergado",
+        "canceled": "Cancelado",
+        "elapsed": "{minutes}'"
+      }
+    }
+  },
   "leagues": {
-    "title": "Ligas",
-    "description": "Crea ligas privadas y compite con tus amigos."
+    "title": "Mis ligas",
+    "description": "Crea ligas privadas y compite con tus amigos.",
+    "empty": {
+      "title": "Todavía no estás en ninguna liga",
+      "description": "Crea tu propia liga o únete a una con un código de invitación."
+    },
+    "members": "{count, plural, one {# miembro} other {# miembros}}",
+    "inviteCode": "Código",
+    "view": "Ver liga",
+    "apiDown": {
+      "title": "Error de conexión",
+      "description": "No pudimos conectar con el servidor del juego. Intenta de nuevo en unos minutos."
+    },
+    "create": {
+      "title": "Crear una liga",
+      "nameLabel": "Nombre de la liga",
+      "namePlaceholder": "Ej.: Los del barrio",
+      "submit": "Crear liga",
+      "submitting": "Creando...",
+      "success": "¡Liga \"{name}\" creada! Comparte este código para invitar a tus amigos:",
+      "copy": "Copiar código",
+      "copied": "¡Copiado!"
+    },
+    "join": {
+      "title": "Unirse con un código",
+      "codeLabel": "Código de invitación",
+      "codePlaceholder": "Ej.: ABCD2345",
+      "submit": "Unirme a la liga",
+      "submitting": "Uniéndome...",
+      "success": "¡Te uniste a la liga \"{name}\"!"
+    },
+    "detail": {
+      "back": "Volver a mis ligas",
+      "shareHint": "Comparte el código {code} para invitar a más amigos.",
+      "notMember": "Únete a esta liga para ver su tabla.",
+      "notFound": "Esta liga no existe.",
+      "noSquad": "Sin equipo",
+      "you": "Tú"
+    },
+    "table": {
+      "rank": "#",
+      "squad": "Equipo",
+      "manager": "DT",
+      "points": "Pts"
+    },
+    "errors": {
+      "generic": "Ocurrió un error inesperado. Intenta de nuevo.",
+      "api_unexpected": "Ocurrió un error inesperado. Intenta de nuevo.",
+      "request_invalid": "Revisa los datos e intenta de nuevo. El código tiene 8 caracteres.",
+      "auth_missingToken": "Tu sesión expiró. Vuelve a iniciar sesión.",
+      "auth_invalidToken": "Tu sesión expiró. Vuelve a iniciar sesión.",
+      "league_notFound": "No existe una liga con ese código.",
+      "league_alreadyMember": "Ya eres parte de esa liga.",
+      "league_codeCollision": "No pudimos generar un código. Intenta de nuevo."
+    }
   },
   "standings": {
     "title": "Clasificación",
-    "description": "La tabla general de todos los directores técnicos del país."
+    "description": "La tabla general de todos los directores técnicos del país.",
+    "filter": {
+      "label": "Ver",
+      "overall": "General"
+    },
+    "table": {
+      "rank": "#",
+      "squad": "Equipo",
+      "manager": "DT",
+      "points": "Pts"
+    },
+    "you": "Tú",
+    "empty": "Todavía no hay equipos en la clasificación.",
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "pageOf": "Página {page} de {pages}"
+    },
+    "apiDown": {
+      "title": "Error de conexión",
+      "description": "No pudimos conectar con el servidor del juego. Intenta de nuevo en unos minutos."
+    }
   },
   "admin": {
     "title": "Administración",

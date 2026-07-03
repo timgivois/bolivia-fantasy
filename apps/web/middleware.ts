@@ -6,7 +6,7 @@ import { auth } from "@/auth";
  * Route prefixes that require an authenticated session.
  * `/clasificacion` stays public: standings are visible to everyone.
  */
-const PROTECTED_PREFIXES = ["/equipo", "/liga", "/admin"];
+const PROTECTED_PREFIXES = ["/equipo", "/puntos", "/liga", "/admin"];
 
 export default auth((request) => {
   const { nextUrl } = request;
@@ -25,5 +25,5 @@ export default auth((request) => {
 });
 
 export const config = {
-  matcher: ["/equipo/:path*", "/liga/:path*", "/admin/:path*"],
+  matcher: ["/equipo/:path*", "/puntos/:path*", "/liga/:path*", "/admin/:path*"],
 };

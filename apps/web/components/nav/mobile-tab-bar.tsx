@@ -33,6 +33,13 @@ function TabIcon({ name, className }: { name: NavKey; className?: string }) {
           <path d="M9 4 4 7l2 4 2-1v10h8V10l2 1 2-4-5-3a3 3 0 0 1-6 0Z" />
         </svg>
       );
+    case "points":
+      // Lightning bolt (live points)
+      return (
+        <svg {...common}>
+          <path d="M13 2 4.5 13.5h5.5L11 22l8.5-11.5H14L13 2Z" />
+        </svg>
+      );
     case "leagues":
       // Trophy
       return (
@@ -59,7 +66,7 @@ export function MobileTabBar() {
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-pitch-900/95 backdrop-blur md:hidden">
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-5">
         {NAV_LINKS.map(({ href, key }) => {
           const active = isActivePath(pathname, href);
           return (

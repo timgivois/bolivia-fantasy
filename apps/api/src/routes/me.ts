@@ -1,7 +1,10 @@
 import {
   fantasySquads,
+  fixtures,
+  playerFixtureStats,
   players,
   rounds,
+  roundScores,
   squadPicks,
   transfers,
   type Database,
@@ -9,9 +12,15 @@ import {
   type Player,
   type Round,
 } from "@bolivia-fantasy/db";
-import { validateSquad, type SquadPick as ScoringPick } from "@bolivia-fantasy/scoring";
+import {
+  scorePlayer,
+  scoreSquadRound,
+  validateSquad,
+  type PlayerStatLine,
+  type SquadPick as ScoringPick,
+} from "@bolivia-fantasy/scoring";
 import { z } from "@bolivia-fantasy/shared";
-import { and, asc, eq, inArray, ne } from "drizzle-orm";
+import { and, asc, eq, inArray, ne, sql } from "drizzle-orm";
 import type { FastifyInstance, FastifyReply } from "fastify";
 
 import { parseOr400, sendError } from "../lib/http.js";
@@ -157,6 +166,159 @@ export function registerMeRoutes(app: FastifyInstance): void {
             .orderBy(asc(squadPicks.position));
 
     return { squad, roundId: roundId ?? null, picks };
+  });
+
+  /**
+   * Per-pick points breakdown for one round (default: current round).
+   * Recomputes from player_fixture_stats via the scoring engine on every call
+   * so it works both live (partial stats) and after finalization — the same
+   * math the worker persists into round_scores when the round finalizes.
+   */
+  app.get("/squad/points", async (request, reply) => {
+    const query = parseOr400(squadQuerySchema, request.query, reply);
+    if (!query) return;
+    const squad = await getSquadOr404(app.db, request.user!.id, reply);
+    if (!squad) return;
+
+    let round: Round | undefined;
+    if (query.roundId !== undefined) {
+      round = await app.db.query.rounds.findFirst({ where: eq(rounds.id, query.roundId) });
+    } else {
+      [round] = await app.db
+        .select()
+        .from(rounds)
+        .where(ne(rounds.status, "finalized"))
+        .orderBy(asc(rounds.season), asc(rounds.phase), asc(rounds.roundNumber))
+        .limit(1);
+    }
+    if (!round) {
+      return sendError(reply, 404, "round.notFound", "Round not found");
+    }
+
+    const pickRows = await app.db
+      .select({
+        playerId: squadPicks.playerId,
+        position: squadPicks.position,
+        isCaptain: squadPicks.isCaptain,
+        isViceCaptain: squadPicks.isViceCaptain,
+        player: {
+          name: players.name,
+          fieldPosition: players.position,
+          clubId: players.clubId,
+        },
+      })
+      .from(squadPicks)
+      .innerJoin(players, eq(squadPicks.playerId, players.id))
+      .where(and(eq(squadPicks.squadId, squad.id), eq(squadPicks.roundId, round.id)))
+      .orderBy(asc(squadPicks.position));
+
+    // Aggregate this round's stat lines per picked player (a player can have
+    // more than one fixture in a round), mirroring the worker's finalization.
+    const statsMap = new Map<string, PlayerStatLine>();
+    if (pickRows.length > 0) {
+      const fieldPositions = new Map(pickRows.map((p) => [p.playerId, p.player.fieldPosition]));
+      const statRows = await app.db
+        .select({ stat: playerFixtureStats })
+        .from(playerFixtureStats)
+        .innerJoin(fixtures, eq(playerFixtureStats.fixtureId, fixtures.id))
+        .where(
+          and(
+            eq(fixtures.roundId, round.id),
+            inArray(
+              playerFixtureStats.playerId,
+              pickRows.map((p) => p.playerId),
+            ),
+          ),
+        );
+      for (const { stat } of statRows) {
+        const key = String(stat.playerId);
+        const existing = statsMap.get(key);
+        if (!existing) {
+          statsMap.set(key, {
+            playerId: key,
+            position: fieldPositions.get(stat.playerId)!,
+            minutes: stat.minutes,
+            goals: stat.goals,
+            assists: stat.assists,
+            cleanSheet: stat.cleanSheet,
+            goalsConceded: stat.goalsConceded,
+            penaltiesSaved: stat.penaltiesSaved,
+            penaltiesMissed: stat.penaltiesMissed,
+            yellowCards: stat.yellowCards,
+            redCards: stat.redCards,
+            ownGoals: stat.ownGoals,
+            saves: stat.saves,
+          });
+        } else {
+          existing.minutes += stat.minutes;
+          existing.goals += stat.goals;
+          existing.assists += stat.assists;
+          existing.cleanSheet = existing.cleanSheet || stat.cleanSheet;
+          existing.goalsConceded += stat.goalsConceded;
+          existing.penaltiesSaved += stat.penaltiesSaved;
+          existing.penaltiesMissed += stat.penaltiesMissed;
+          existing.yellowCards += stat.yellowCards;
+          existing.redCards += stat.redCards;
+          existing.ownGoals += stat.ownGoals;
+          existing.saves = (existing.saves ?? 0) + stat.saves;
+        }
+      }
+    }
+
+    const [penaltyRow] = await app.db
+      .select({ penalty: sql<number>`coalesce(sum(${transfers.pointsCost}), 0)::int` })
+      .from(transfers)
+      .where(and(eq(transfers.squadId, squad.id), eq(transfers.roundId, round.id)));
+
+    const result = scoreSquadRound(
+      pickRows.map((pick) => toScoringPick(pick, pick.player.fieldPosition)),
+      statsMap,
+      { transferPenalty: penaltyRow?.penalty ?? 0 },
+    );
+    const pointsById = new Map(result.playerPoints.map((p) => [p.playerId, p]));
+
+    const score = await app.db.query.roundScores.findFirst({
+      where: and(eq(roundScores.squadId, squad.id), eq(roundScores.roundId, round.id)),
+    });
+
+    return {
+      squad,
+      roundId: round.id,
+      finalized: score?.finalized ?? false,
+      totalPoints: result.totalPoints,
+      benchPoints: result.benchPoints,
+      transferPenalty: result.transferPenalty,
+      captainPlayerId:
+        result.captainPlayerId === null ? null : Number(result.captainPlayerId),
+      autoSubs: result.autoSubs.map((s) => ({ out: Number(s.out), in: Number(s.in) })),
+      picks: pickRows.map((pick) => {
+        const stat = statsMap.get(String(pick.playerId));
+        const pickPoints = pointsById.get(String(pick.playerId))!;
+        return {
+          ...pick,
+          stats: stat
+            ? {
+                minutes: stat.minutes,
+                goals: stat.goals,
+                assists: stat.assists,
+                cleanSheet: stat.cleanSheet,
+                goalsConceded: stat.goalsConceded,
+                penaltiesSaved: stat.penaltiesSaved,
+                penaltiesMissed: stat.penaltiesMissed,
+                yellowCards: stat.yellowCards,
+                redCards: stat.redCards,
+                ownGoals: stat.ownGoals,
+                saves: stat.saves ?? 0,
+              }
+            : null,
+          breakdown: stat ? scorePlayer(stat).breakdown : [],
+          basePoints: pickPoints.basePoints,
+          multiplier: pickPoints.multiplier,
+          points: pickPoints.points,
+          isStarter: pickPoints.isStarter,
+        };
+      }),
+    };
   });
 
   app.put("/squad/picks", async (request, reply) => {

@@ -2,6 +2,7 @@
 export const NAV_LINKS = [
   { href: "/", key: "home" },
   { href: "/equipo", key: "team" },
+  { href: "/puntos", key: "points" },
   { href: "/liga", key: "leagues" },
   { href: "/clasificacion", key: "standings" },
 ] as const;

@@ -4,6 +4,7 @@ import {
   clubs,
   fantasySquads,
   fixtures,
+  playerFixtureStats,
   players,
   rounds,
   users,
@@ -695,6 +696,92 @@ describe("admin", () => {
     expect(typeof body.apiRequestsToday).toBe("number");
     expect(body.lastStatUpdateAt).not.toBeNull(); // stat correction above
     expect(body.lastFixtureUpdateAt).not.toBeNull();
+  });
+});
+
+describe("my round points (GET /me/squad/points)", () => {
+  it("computes per-pick breakdowns, captain doubling and totals", async () => {
+    // The admin stat-correction test above left def[0] with 90 min + 1 goal
+    // (DEF: 2 + 6 = 8). Give the captain (fwd[0]) a stat line too:
+    // FWD 90 min + 1 goal = 2 + 4 = 6, doubled to 12 as captain.
+    await db.insert(playerFixtureStats).values({
+      playerId: fwd[0]!.id,
+      fixtureId: fixture.id,
+      minutes: 90,
+      goals: 1,
+    });
+
+    const res = await app.inject({
+      method: "GET",
+      url: `/me/squad/points?roundId=${openRound.id}`,
+      headers: bearer(aliceToken),
+    });
+    expect(res.statusCode).toBe(200);
+    const body = res.json();
+
+    expect(body.roundId).toBe(openRound.id);
+    expect(body.finalized).toBe(false);
+    expect(body.picks).toHaveLength(15);
+    expect(body.transferPenalty).toBe(0); // Alice's transfer was free
+    expect(body.captainPlayerId).toBe(fwd[0]!.id);
+    expect(body.totalPoints).toBe(20); // def[0] 8 + captain 6x2
+
+    const captain = body.picks.find(
+      (p: { playerId: number }) => p.playerId === fwd[0]!.id,
+    );
+    expect(captain.isCaptain).toBe(true);
+    expect(captain.basePoints).toBe(6);
+    expect(captain.multiplier).toBe(2);
+    expect(captain.points).toBe(12);
+    expect(captain.isStarter).toBe(true);
+    expect(captain.stats.minutes).toBe(90);
+    expect(captain.stats.goals).toBe(1);
+
+    const defender = body.picks.find(
+      (p: { playerId: number }) => p.playerId === def[0]!.id,
+    );
+    expect(defender.points).toBe(8);
+    expect(defender.multiplier).toBe(1);
+    expect(defender.breakdown).toEqual([
+      { rule: "minutes", value: 90, points: 2 },
+      { rule: "goals", value: 1, points: 6 },
+    ]);
+
+    // A pick with no stat line reports "did not play".
+    const benchGk = body.picks.find(
+      (p: { playerId: number }) => p.playerId === gk[1]!.id,
+    );
+    expect(benchGk.stats).toBeNull();
+    expect(benchGk.points).toBe(0);
+    expect(benchGk.isStarter).toBe(false);
+  });
+
+  it("defaults to the current round when roundId is omitted", async () => {
+    const res = await app.inject({
+      method: "GET",
+      url: "/me/squad/points",
+      headers: bearer(aliceToken),
+    });
+    expect(res.statusCode).toBe(200);
+    expect(res.json().roundId).toBe(openRound.id);
+  });
+
+  it("404s for an unknown round and for users without a squad", async () => {
+    const badRound = await app.inject({
+      method: "GET",
+      url: "/me/squad/points?roundId=999999999",
+      headers: bearer(aliceToken),
+    });
+    expect(badRound.statusCode).toBe(404);
+    expect(badRound.json().error.code).toBe("round.notFound");
+
+    const noSquad = await app.inject({
+      method: "GET",
+      url: `/me/squad/points?roundId=${openRound.id}`,
+      headers: bearer(carolToken),
+    });
+    expect(noSquad.statusCode).toBe(404);
+    expect(noSquad.json().error.code).toBe("squad.notFound");
   });
 });
 
