@@ -159,16 +159,25 @@ async function main() {
     findings.problems.push(`/leagues failed: ${leagues.error ?? 'empty response'}`);
   }
 
-  // Determine current/latest season.
+  // Determine the season to sample. SPIKE_SEASON overrides — useful on the
+  // free plan, which only allows seasons 2022-2024 (the current season needs
+  // a paid plan). E.g.: SPIKE_SEASON=2024 to validate stat quality for free.
+  const override = Number.parseInt(process.env.SPIKE_SEASON ?? '', 10);
   const currentSeason = seasons.find((s) => s.current);
-  const latestSeason =
-    currentSeason ??
-    [...seasons].sort((a, b) => (b.year ?? 0) - (a.year ?? 0))[0] ??
-    null;
-  const seasonYear = latestSeason?.year ?? new Date().getFullYear();
-  findings.coverageStatsPlayers = Boolean(latestSeason?.coverage?.fixtures?.statistics_players);
-  findings.coverageEvents = Boolean(latestSeason?.coverage?.fixtures?.events);
-  console.log(`\nUsing season: ${seasonYear}${currentSeason ? ' (flagged current)' : ' (latest available)'}`);
+  const chosenSeason = Number.isInteger(override)
+    ? (seasons.find((s) => s.year === override) ?? null)
+    : (currentSeason ??
+      [...seasons].sort((a, b) => (b.year ?? 0) - (a.year ?? 0))[0] ??
+      null);
+  const seasonYear = chosenSeason?.year ?? (Number.isInteger(override) ? override : new Date().getFullYear());
+  findings.coverageStatsPlayers = Boolean(chosenSeason?.coverage?.fixtures?.statistics_players);
+  findings.coverageEvents = Boolean(chosenSeason?.coverage?.fixtures?.events);
+  const seasonNote = Number.isInteger(override)
+    ? ' (SPIKE_SEASON override)'
+    : currentSeason
+      ? ' (flagged current)'
+      : ' (latest available)';
+  console.log(`\nUsing season: ${seasonYear}${seasonNote}`);
 
   // ------------------------------------------------------------- (c) fixtures
   heading(`(c) GET /fixtures?league=${LEAGUE_ID}&season=${seasonYear} — fixture inventory`);
