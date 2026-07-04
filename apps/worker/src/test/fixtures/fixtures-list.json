@@ -1,0 +1,108 @@
+{
+  "get": "fixtures",
+  "parameters": { "league": "344", "season": "2026" },
+  "errors": [],
+  "results": 3,
+  "paging": { "current": 1, "total": 1 },
+  "response": [
+    {
+      "fixture": {
+        "id": 9101,
+        "referee": "Gery Vargas, Bolivia",
+        "timezone": "UTC",
+        "date": "2026-07-04T20:00:00+00:00",
+        "timestamp": 1783022400,
+        "periods": { "first": null, "second": null },
+        "venue": { "id": 2101, "name": "Estadio Hernando Siles", "city": "La Paz" },
+        "status": { "long": "Not Started", "short": "NS", "elapsed": null, "extra": null }
+      },
+      "league": {
+        "id": 344,
+        "name": "Primera División",
+        "country": "Bolivia",
+        "logo": "https://media.api-sports.io/football/leagues/344.png",
+        "flag": "https://media.api-sports.io/flags/bo.svg",
+        "season": 2026,
+        "round": "Apertura - 1",
+        "standings": true
+      },
+      "teams": {
+        "home": { "id": 5001, "name": "Bolívar", "logo": "https://media.api-sports.io/football/teams/5001.png", "winner": null },
+        "away": { "id": 5002, "name": "The Strongest", "logo": "https://media.api-sports.io/football/teams/5002.png", "winner": null }
+      },
+      "goals": { "home": null, "away": null },
+      "score": {
+        "halftime": { "home": null, "away": null },
+        "fulltime": { "home": null, "away": null },
+        "extratime": { "home": null, "away": null },
+        "penalty": { "home": null, "away": null }
+      }
+    },
+    {
+      "fixture": {
+        "id": 9102,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2026-07-05T00:30:00+00:00",
+        "timestamp": 1783038600,
+        "periods": { "first": null, "second": null },
+        "venue": { "id": 2102, "name": "Estadio Municipal de El Alto", "city": "El Alto" },
+        "status": { "long": "Not Started", "short": "NS", "elapsed": null, "extra": null }
+      },
+      "league": {
+        "id": 344,
+        "name": "Primera División",
+        "country": "Bolivia",
+        "logo": "https://media.api-sports.io/football/leagues/344.png",
+        "flag": "https://media.api-sports.io/flags/bo.svg",
+        "season": 2026,
+        "round": "Apertura - 1",
+        "standings": true
+      },
+      "teams": {
+        "home": { "id": 5003, "name": "Club Always Ready", "logo": "https://media.api-sports.io/football/teams/5003.png", "winner": null },
+        "away": { "id": 5004, "name": "Blooming", "logo": "https://media.api-sports.io/football/teams/5004.png", "winner": null }
+      },
+      "goals": { "home": null, "away": null },
+      "score": {
+        "halftime": { "home": null, "away": null },
+        "fulltime": { "home": null, "away": null },
+        "extratime": { "home": null, "away": null },
+        "penalty": { "home": null, "away": null }
+      }
+    },
+    {
+      "fixture": {
+        "id": 9103,
+        "referee": null,
+        "timezone": "UTC",
+        "date": "2026-07-11T20:00:00+00:00",
+        "timestamp": 1783627200,
+        "periods": { "first": null, "second": null },
+        "venue": { "id": 2104, "name": "Estadio Félix Capriles", "city": "Cochabamba" },
+        "status": { "long": "Not Started", "short": "NS", "elapsed": null, "extra": null }
+      },
+      "league": {
+        "id": 344,
+        "name": "Primera División",
+        "country": "Bolivia",
+        "logo": "https://media.api-sports.io/football/leagues/344.png",
+        "flag": "https://media.api-sports.io/flags/bo.svg",
+        "season": 2026,
+        "round": "Apertura - 2",
+        "standings": true
+      },
+      "teams": {
+        "home": { "id": 5006, "name": "Club Aurora", "logo": "https://media.api-sports.io/football/teams/5006.png", "winner": null },
+        "away": { "id": 5001, "name": "Bolívar", "logo": "https://media.api-sports.io/football/teams/5001.png", "winner": null }
+      },
+      "goals": { "home": null, "away": null },
+      "score": {
+        "halftime": { "home": null, "away": null },
+        "fulltime": { "home": null, "away": null },
+        "extratime": { "home": null, "away": null },
+        "penalty": { "home": null, "away": null }
+      }
+    }
+  ]
+}

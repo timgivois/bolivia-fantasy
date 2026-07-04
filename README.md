@@ -67,6 +67,18 @@ pnpm typecheck   # tsc --noEmit across the workspace
 pnpm test        # vitest suites
 ```
 
+## Deployment
+
+The app deploys to [Railway](https://railway.com) as three Docker services
+(web, api, worker) plus a Postgres plugin. Each app ships its own multi-stage
+Dockerfile (`apps/*/Dockerfile`, built from the repo root) and Railway
+config-as-code (`apps/*/railway.json`); database migrations run automatically
+as the api service's pre-deploy step.
+
+See **[docs/DEPLOY.md](./docs/DEPLOY.md)** for the full runbook: project
+setup, per-service environment variables, OAuth redirect URIs, first-deploy
+steps (migrate, seed, admin promotion, initial sync) and the launch checklist.
+
 ## Environment variables
 
 See [.env.example](./.env.example) for the full template.

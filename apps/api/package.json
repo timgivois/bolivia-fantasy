@@ -7,17 +7,25 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "lint": "eslint src"
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
+    "lint": "eslint src test",
+    "test": "vitest run"
   },
   "dependencies": {
+    "@auth/core": "^0.34.3",
     "@bolivia-fantasy/db": "workspace:*",
+    "@bolivia-fantasy/scoring": "workspace:*",
     "@bolivia-fantasy/shared": "workspace:*",
-    "fastify": "^5.4.0"
+    "@fastify/cors": "^11.2.0",
+    "drizzle-orm": "^0.44.0",
+    "fastify": "^5.4.0",
+    "pg": "^8.16.0"
   },
   "devDependencies": {
     "@types/node": "^22.15.0",
+    "@types/pg": "^8.15.0",
     "tsx": "^4.20.0",
-    "typescript": "^5.8.0"
+    "typescript": "^5.8.0",
+    "vitest": "^4.1.9"
   }
 }

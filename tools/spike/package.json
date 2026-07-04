@@ -1,0 +1,14 @@
+{
+  "name": "@bolivia-fantasy/spike",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Verification spike: API-Football (api-sports.io v3) coverage of Bolivia Primera Division (league 344)",
+  "scripts": {
+    "verify": "node verify.mjs",
+    "lint": "echo \"(spike) no lint\"",
+    "typecheck": "echo \"(spike) no typecheck\"",
+    "test": "echo \"(spike) no tests\"",
+    "build": "echo \"(spike) no build\""
+  }
+}

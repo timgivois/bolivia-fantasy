@@ -1,0 +1,119 @@
+{
+  "get": "players",
+  "parameters": { "league": "344", "season": "2026", "page": "2" },
+  "errors": [],
+  "results": 5,
+  "paging": { "current": 2, "total": 2 },
+  "response": [
+    {
+      "player": {
+        "id": 60005,
+        "name": "Marcos Riquelme",
+        "firstname": "Marcos Andrés",
+        "lastname": "Riquelme Alcócer",
+        "age": 35,
+        "birth": { "date": "1990-08-02", "place": "Cañada de Gómez", "country": "Argentina" },
+        "nationality": "Bolivia",
+        "height": "182 cm",
+        "weight": "79 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/60005.png"
+      },
+      "statistics": [
+        {
+          "team": { "id": 5003, "name": "Club Always Ready", "logo": "https://media.api-sports.io/football/teams/5003.png" },
+          "league": { "id": 344, "name": "Primera División", "country": "Bolivia", "logo": "https://media.api-sports.io/football/leagues/344.png", "flag": "https://media.api-sports.io/flags/bo.svg", "season": 2026 },
+          "games": { "appearences": 10, "lineups": 9, "minutes": 812, "number": null, "position": "Attacker", "rating": "7.344444", "captain": false }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 60006,
+        "name": "Jhon García",
+        "firstname": "Jhon Alejandro",
+        "lastname": "García Ordóñez",
+        "age": 24,
+        "birth": { "date": "2001-10-14", "place": "Santa Cruz de la Sierra", "country": "Bolivia" },
+        "nationality": "Bolivia",
+        "height": "175 cm",
+        "weight": "70 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/60006.png"
+      },
+      "statistics": [
+        {
+          "team": { "id": 5004, "name": "Blooming", "logo": "https://media.api-sports.io/football/teams/5004.png" },
+          "league": { "id": 344, "name": "Primera División", "country": "Bolivia", "logo": "https://media.api-sports.io/football/leagues/344.png", "flag": "https://media.api-sports.io/flags/bo.svg", "season": 2026 },
+          "games": { "appearences": 6, "lineups": 3, "minutes": 312, "number": null, "position": "Midfielder", "rating": "6.855555", "captain": false }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 60007,
+        "name": "Pedro Álvarez",
+        "firstname": "Pedro Antonio",
+        "lastname": "Álvarez Céspedes",
+        "age": 26,
+        "birth": { "date": "1999-12-01", "place": "Cochabamba", "country": "Bolivia" },
+        "nationality": "Bolivia",
+        "height": "183 cm",
+        "weight": "78 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/60007.png"
+      },
+      "statistics": [
+        {
+          "team": { "id": 5004, "name": "Blooming", "logo": "https://media.api-sports.io/football/teams/5004.png" },
+          "league": { "id": 344, "name": "Primera División", "country": "Bolivia", "logo": "https://media.api-sports.io/football/leagues/344.png", "flag": "https://media.api-sports.io/flags/bo.svg", "season": 2026 },
+          "games": { "appearences": 10, "lineups": 10, "minutes": 900, "number": null, "position": "Defender", "rating": "6.933333", "captain": false }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 60011,
+        "name": "Marcos Ríos",
+        "firstname": "Marcos Daniel",
+        "lastname": "Ríos Vargas",
+        "age": 29,
+        "birth": { "date": "1996-07-19", "place": "Oruro", "country": "Bolivia" },
+        "nationality": "Bolivia",
+        "height": "181 cm",
+        "weight": "77 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/60011.png"
+      },
+      "statistics": [
+        {
+          "team": { "id": 5002, "name": "The Strongest", "logo": "https://media.api-sports.io/football/teams/5002.png" },
+          "league": { "id": 344, "name": "Primera División", "country": "Bolivia", "logo": "https://media.api-sports.io/football/leagues/344.png", "flag": "https://media.api-sports.io/flags/bo.svg", "season": 2026 },
+          "games": { "appearences": 8, "lineups": 8, "minutes": 690, "number": null, "position": "Defender", "rating": "6.744444", "captain": false }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 60099,
+        "name": "Joven Promesa",
+        "firstname": "Joven",
+        "lastname": "Promesa",
+        "age": 17,
+        "birth": { "date": "2009-01-30", "place": "Potosí", "country": "Bolivia" },
+        "nationality": "Bolivia",
+        "height": null,
+        "weight": null,
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/60099.png"
+      },
+      "statistics": [
+        {
+          "team": { "id": 5001, "name": "Bolívar", "logo": "https://media.api-sports.io/football/teams/5001.png" },
+          "league": { "id": 344, "name": "Primera División", "country": "Bolivia", "logo": "https://media.api-sports.io/football/leagues/344.png", "flag": "https://media.api-sports.io/flags/bo.svg", "season": 2026 },
+          "games": { "appearences": 0, "lineups": 0, "minutes": 0, "number": null, "position": null, "rating": null, "captain": false }
+        }
+      ]
+    }
+  ]
+}

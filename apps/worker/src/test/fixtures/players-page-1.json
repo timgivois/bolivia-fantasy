@@ -1,0 +1,97 @@
+{
+  "get": "players",
+  "parameters": { "league": "344", "season": "2026", "page": "1" },
+  "errors": [],
+  "results": 4,
+  "paging": { "current": 1, "total": 2 },
+  "response": [
+    {
+      "player": {
+        "id": 60001,
+        "name": "Carlos Lampe",
+        "firstname": "Carlos Emilio",
+        "lastname": "Lampe Porras",
+        "age": 39,
+        "birth": { "date": "1987-03-17", "place": "Santa Cruz de la Sierra", "country": "Bolivia" },
+        "nationality": "Bolivia",
+        "height": "191 cm",
+        "weight": "85 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/60001.png"
+      },
+      "statistics": [
+        {
+          "team": { "id": 5001, "name": "Bolívar", "logo": "https://media.api-sports.io/football/teams/5001.png" },
+          "league": { "id": 344, "name": "Primera División", "country": "Bolivia", "logo": "https://media.api-sports.io/football/leagues/344.png", "flag": "https://media.api-sports.io/flags/bo.svg", "season": 2026 },
+          "games": { "appearences": 10, "lineups": 10, "minutes": 900, "number": null, "position": "Goalkeeper", "rating": "7.211111", "captain": false }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 60002,
+        "name": "Luis Haquin",
+        "firstname": "Luis Olegario",
+        "lastname": "Haquin Arteaga",
+        "age": 28,
+        "birth": { "date": "1997-11-25", "place": "Santa Cruz de la Sierra", "country": "Bolivia" },
+        "nationality": "Bolivia",
+        "height": "186 cm",
+        "weight": "80 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/60002.png"
+      },
+      "statistics": [
+        {
+          "team": { "id": 5001, "name": "Bolívar", "logo": "https://media.api-sports.io/football/teams/5001.png" },
+          "league": { "id": 344, "name": "Primera División", "country": "Bolivia", "logo": "https://media.api-sports.io/football/leagues/344.png", "flag": "https://media.api-sports.io/flags/bo.svg", "season": 2026 },
+          "games": { "appearences": 9, "lineups": 9, "minutes": 810, "number": null, "position": "Defender", "rating": "7.033333", "captain": true }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 60003,
+        "name": "Ramiro Vaca",
+        "firstname": "Ramiro",
+        "lastname": "Vaca Guzmán",
+        "age": 27,
+        "birth": { "date": "1999-05-06", "place": "La Paz", "country": "Bolivia" },
+        "nationality": "Bolivia",
+        "height": "170 cm",
+        "weight": "66 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/60003.png"
+      },
+      "statistics": [
+        {
+          "team": { "id": 5001, "name": "Bolívar", "logo": "https://media.api-sports.io/football/teams/5001.png" },
+          "league": { "id": 344, "name": "Primera División", "country": "Bolivia", "logo": "https://media.api-sports.io/football/leagues/344.png", "flag": "https://media.api-sports.io/flags/bo.svg", "season": 2026 },
+          "games": { "appearences": 10, "lineups": 8, "minutes": 731, "number": null, "position": "Midfielder", "rating": "7.455555", "captain": false }
+        }
+      ]
+    },
+    {
+      "player": {
+        "id": 60004,
+        "name": "Enrique Triverio",
+        "firstname": "Enrique Ariel",
+        "lastname": "Triverio",
+        "age": 37,
+        "birth": { "date": "1988-02-08", "place": "El Trébol", "country": "Argentina" },
+        "nationality": "Argentina",
+        "height": "185 cm",
+        "weight": "83 kg",
+        "injured": false,
+        "photo": "https://media.api-sports.io/football/players/60004.png"
+      },
+      "statistics": [
+        {
+          "team": { "id": 5002, "name": "The Strongest", "logo": "https://media.api-sports.io/football/teams/5002.png" },
+          "league": { "id": 344, "name": "Primera División", "country": "Bolivia", "logo": "https://media.api-sports.io/football/leagues/344.png", "flag": "https://media.api-sports.io/flags/bo.svg", "season": 2026 },
+          "games": { "appearences": 10, "lineups": 10, "minutes": 874, "number": null, "position": "Attacker", "rating": "7.122222", "captain": false }
+        }
+      ]
+    }
+  ]
+}

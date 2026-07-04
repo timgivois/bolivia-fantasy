@@ -1,0 +1,8 @@
+{
+  "get": "fixtures/rounds",
+  "parameters": { "league": "344", "season": "2026" },
+  "errors": [],
+  "results": 3,
+  "paging": { "current": 1, "total": 1 },
+  "response": ["Apertura - 1", "Apertura - 2", "Clausura - 1"]
+}
